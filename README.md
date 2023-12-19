@@ -2,18 +2,34 @@
 
 - 一款使用百度翻译来快速翻译中英文的插件
 - 快捷键 alt+w
-- 配置文件 trans.config.json
+- 配置文件 1(优先级最高) trans.config.json
   ```json
   {
     "APPID": "xxx",
-    "KEY": "aaa"
+    "KEY": "aaa",
+    "maxTrans": "单次转换最大长度 默认100"
+  }
+  ```
+- 配置文件 2 settings.json
+  ```json
+  {
+    "trans-lang": {
+      "APPID": "xxx",
+      "KEY": "aa",
+      "maxTrans": 100
+    }
   }
   ```
 
 # 其他信息
-- 需要自己申请appid 百度翻译开发平台地址(https://fanyi-api.baidu.com/)
+
+- 需要自己申请 appid 百度翻译开发平台地址(https://fanyi-api.baidu.com/)
 
 # 更新日志
+
+### 2023/12/19 0.0.3
+
+- U 优化配置逻辑
 
 ### 2023/12/19 0.0.2
 

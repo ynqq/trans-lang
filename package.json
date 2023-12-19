@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -16,6 +16,19 @@
   "icon": "images/icon.png",
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "properties": {
+        "trans-lang": {
+          "type": "object",
+          "default": {
+            "APPID": "",
+            "KEY": "",
+            "maxTrans": 100
+          },
+          "description": "转换配置"
+        }
+      }
+    },
     "keybindings": [
       {
         "command": "trans-lang.trans",
