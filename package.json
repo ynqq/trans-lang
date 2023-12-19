@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -13,6 +13,7 @@
   "activationEvents": [
     "*"
   ],
+  "icon": "images/icon.png",
   "main": "./dist/extension.js",
   "contributes": {
     "keybindings": [
