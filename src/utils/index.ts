@@ -8,3 +8,12 @@ export function getRandomStr(num = 0) {
 export const getNowDate = () => {
     return new Date().toLocaleDateString();
 };
+export const toHump = (str: string) => {
+    const strList = str.split(' ');
+    let [f, ...other] = strList;
+    other = other.map(item => {
+        const [s, ...o] = item;
+        return `${s.toLocaleUpperCase()}${o.join('')}`;
+    });
+    return `${f.toLocaleLowerCase()}${other.join('')}`;
+};

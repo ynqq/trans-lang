@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -34,11 +34,20 @@
         "command": "trans-lang.trans",
         "key": "alt+w",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "trans-lang.transAutoHump",
+        "key": "alt+q",
+        "when": "editorTextFocus"
       }
     ],
     "commands": [
       {
         "command": "trans-lang.trans",
+        "title": "trans"
+      },
+      {
+        "command": "trans-lang.transAutoHump",
         "title": "trans"
       }
     ]

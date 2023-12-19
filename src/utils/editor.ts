@@ -1,4 +1,5 @@
 import { Selection, window } from "vscode";
+import { toHump } from ".";
 
 export const getSelectText = () => {
     const editor = window.activeTextEditor;
@@ -12,10 +13,11 @@ export const getSelectText = () => {
 };
 
 interface ReplaceParams {
-  dst: string
+  dst: string;
+  autoHump?: boolean;
 }
 
-export const replaceSelectText = ({ dst }: ReplaceParams) => {
+export const replaceSelectText = ({ dst, autoHump }: ReplaceParams) => {
   // 替换选中文本
   const editor = window.activeTextEditor;
   if (!editor) {
@@ -26,6 +28,10 @@ export const replaceSelectText = ({ dst }: ReplaceParams) => {
     let newPosition: Selection | null = null;
 
     newPosition = newPosition || position;
-    editBuilder.replace(newPosition, `${dst}`);
+    let str = dst;
+    if(autoHump){
+      str = toHump(str);
+    }
+    editBuilder.replace(newPosition, `${str}`);
   });
 };
