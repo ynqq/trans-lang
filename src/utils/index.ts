@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export function getRandomStr(num = 0) {
     let str = 'abcdefghijklmnopqrxtuvwxyz';
     str = str + str.toLocaleUpperCase() + '0123456789';
@@ -6,7 +8,15 @@ export function getRandomStr(num = 0) {
 }
 
 export const getNowDate = () => {
-    return new Date().toLocaleDateString();
+    return dayjs().format('YYYY/MM/DD');
+};
+export const getNowDateObj = () => {
+    const d = dayjs();
+    return {
+        y: d.year(),
+        m: d.month() + 1,
+        d: d.date()
+    };
 };
 export const toHump = (str: string) => {
     const strList = str.split(' ');
