@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -31,6 +31,11 @@
     },
     "keybindings": [
       {
+        "command": "trans-lang.transJapanese",
+        "key": "alt+j",
+        "when": "editorTextFocus"
+      },
+      {
         "command": "trans-lang.trans",
         "key": "alt+w",
         "when": "editorTextFocus"
@@ -42,6 +47,10 @@
       }
     ],
     "commands": [
+      {
+        "command": "trans-lang.transJapanese",
+        "title": "中文转日语"
+      },
       {
         "command": "trans-lang.trans",
         "title": "trans"

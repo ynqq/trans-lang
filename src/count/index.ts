@@ -51,3 +51,9 @@ export const showInStatusBar = (context: ExtensionContext) => {
     statusBar.tooltip = new MarkdownString(`本月翻译<span style="color: #ff0000">${allCount}</span>次, 长度${allLeng}`);
     statusBar.show();
 };
+
+export const getStatusBar = () => statusBar;
+
+export const showLoading = () => {
+    statusBar.text = '$(sync~spin) 正在翻译,请稍等...';
+};

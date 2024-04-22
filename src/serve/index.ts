@@ -1,5 +1,5 @@
 import { getSign } from "./sign";
-import { isChinese } from "../utils/reg";
+import { isChinese, isJapanese } from "../utils/reg";
 import request from 'request';
 import { window } from "vscode";
 
@@ -12,15 +12,23 @@ interface ITransServeValue {
   toStr: string;
 }
 
-export const transServe = async (str: string): Promise<ITransServeValue> => {
+type TLanguage = 'jp' | 'en' | 'zh';
+
+/**
+ * 翻译
+ * @param str 需要翻译的内容
+ * @param toLangType 翻译到哪种语言 中->英 中->日 英->中 日->中
+ * @returns 
+ */
+export const transServe = async (str: string, toLangType: TLanguage = 'en'): Promise<ITransServeValue> => {
   return new Promise(async (resolve, reject) => {
     try {
       const { query, appid, salt, sign } = await getSign(str);
-      let from = "en",
+      let from = toLangType,
         to = "zh";
-      if (isChinese(str)) {
+      if (!isJapanese(str) && isChinese(str)) {
         from = "zh";
-        to = "en";
+        to = toLangType;
       }
       const postData = {
         q: query,
@@ -37,7 +45,6 @@ export const transServe = async (str: string): Promise<ITransServeValue> => {
           return;
         }
         body = JSON.parse(body);
-
         const { trans_result } = body;
         if (!body.error_code || body.error_code === '52000') {
           return resolve({ ...body, code: 1, fromStr: trans_result[0].src, toStr: trans_result[0].dst });
