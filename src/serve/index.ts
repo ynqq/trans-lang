@@ -15,9 +15,10 @@ interface ITransServeValue {
 type TLanguage = 'jp' | 'en' | 'zh';
 
 /**
- * 翻译
+ * #TODO 日->中 单个命令转不了( 。)这玩意算中文还是日文呢 
+ * 翻译 
  * @param str 需要翻译的内容
- * @param toLangType 翻译到哪种语言 中->英 中->日 英->中 日->中
+ * @param toLangType 翻译到哪种语言 中->英 中->日 英->中 
  * @returns 
  */
 export const transServe = async (str: string, toLangType: TLanguage = 'en'): Promise<ITransServeValue> => {
@@ -26,7 +27,7 @@ export const transServe = async (str: string, toLangType: TLanguage = 'en'): Pro
       const { query, appid, salt, sign } = await getSign(str);
       let from = toLangType,
         to = "zh";
-      if (!isJapanese(str) && isChinese(str)) {
+      if (isChinese(str)) {
         from = "zh";
         to = toLangType;
       }
