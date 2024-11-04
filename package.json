@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -58,6 +58,10 @@
       {
         "command": "trans-lang.transAutoHump",
         "title": "trans"
+      },
+      {
+        "command": "trans-lang.getValue",
+        "title": "文本转换方法"
       }
     ]
   },

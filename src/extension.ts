@@ -90,21 +90,26 @@ export function activate(context: ExtensionContext) {
 
   const getTransValue = commands.registerCommand(
     TRANS_GET_VALUE,
-    async (options: { text: string; from: TLanguage; to: TLanguage }) => {
-      const { text, from, to } = options;
-      if (!text || !from || !to) {
-        window.showErrorMessage(`缺少参数: [text, from, to]中的一个或多个`);
+    async (
+      options: { text: string; to: TLanguage } = {
+        text: "测试文本",
+        to: "jp",
+      }
+    ) => {
+      const { text, to } = options;
+      if (!text || !to) {
+        window.showErrorMessage(`缺少参数: [text, to]中的一个或多个`);
         return;
       }
       const { can, max, nowLen } = await canTrans(text);
       if (can) {
         showTransLoading(text, to);
-        const { toStr } = await transServe(text);
+        const { toStr } = await transServe(text, to);
         saveCount(context, nowLen);
         return {
+          str: text,
           toStr,
           to,
-          from,
           _: options,
         };
       } else {
