@@ -21,7 +21,7 @@ export function activate(context: ExtensionContext) {
   showInStatusBar(context);
 
   let disposableJa = commands.registerCommand(TRANS_NAME_JAPANESE, async () => {
-    const selectText = getSelectText();
+    const selectText = await getSelectText();
     if (selectText === "") {
       return;
     }
@@ -42,7 +42,7 @@ export function activate(context: ExtensionContext) {
 
   context.subscriptions.push(disposableJa);
   let disposable = commands.registerCommand(TRANS_NAME, async () => {
-    const selectText = getSelectText();
+    const selectText = await getSelectText();
     if (selectText === "") {
       return;
     }
@@ -66,7 +66,7 @@ export function activate(context: ExtensionContext) {
   const autoHumpDis = commands.registerCommand(
     TRANS_AUTO_HUMP_NAME,
     async () => {
-      const selectText = getSelectText();
+      const selectText = await getSelectText();
       if (selectText === "") {
         return;
       }

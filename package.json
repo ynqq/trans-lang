@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "engines": {
     "vscode": "^1.54.0"
   },

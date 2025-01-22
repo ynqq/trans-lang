@@ -1,14 +1,15 @@
-import { Selection, window } from "vscode";
+import { env, Selection, window } from "vscode";
 import { toHump } from ".";
 
-export const getSelectText = () => {
-    const editor = window.activeTextEditor;
+export const getSelectText = async () => {
+  const editor = window.activeTextEditor;
   if (!editor) {
     return false;
   }
-  const lineText = editor.document.getText(
-    editor.selection
-  );
+  const lineText = editor.document.getText(editor.selection);
+  if (lineText === "") {
+    return await env.clipboard.readText();
+  }
   return lineText;
 };
 
@@ -29,7 +30,7 @@ export const replaceSelectText = ({ dst, autoHump }: ReplaceParams) => {
 
     newPosition = newPosition || position;
     let str = dst;
-    if(autoHump){
+    if (autoHump) {
       str = toHump(str);
     }
     editBuilder.replace(newPosition, `${str}`);
