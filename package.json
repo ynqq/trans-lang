@@ -2,7 +2,7 @@
   "name": "trans-lang",
   "displayName": "trans-lang",
   "description": "",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -98,6 +98,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.10",
+    "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "request": "^2.88.2"
   }

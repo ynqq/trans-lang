@@ -32,6 +32,8 @@ export const transServe = async (
 ): Promise<ITransServeValue> => {
   return new Promise(async (resolve, reject) => {
     try {
+      console.log('str----:', str);
+      
       const { query, appid, salt, sign } = await getSign(str);
       let from = toLangType,
         to = "zh";
@@ -54,13 +56,14 @@ export const transServe = async (
           return;
         }
         body = JSON.parse(body);
+        
         const { trans_result } = body;
         if (!body.error_code || body.error_code === "52000") {
           return resolve({
             ...body,
             code: 1,
-            fromStr: trans_result[0].src,
-            toStr: trans_result[0].dst,
+            fromStr: trans_result.map((v: any) => v.src).join('\n'),
+            toStr: trans_result.map((v: any) => v.dst).join('\n'),
           });
         }
         reject(body);
